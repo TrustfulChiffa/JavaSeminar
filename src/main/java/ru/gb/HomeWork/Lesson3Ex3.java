@@ -14,8 +14,8 @@ public class Lesson3Ex3 {
         // Перебор книг и поиск соответствующих условиям
         for (String[] book : books) {
             String title = book[0];
-            String author = book[1];
-            int price = Integer.parseInt(book[2]);
+            String author = book[1]; // создаём на всякий случай
+            int price = Integer.parseInt(book[2]); // создаём на всякий случай
             int year = Integer.parseInt(book[3]);
             int pageCount = Integer.parseInt(book[4]);
 
