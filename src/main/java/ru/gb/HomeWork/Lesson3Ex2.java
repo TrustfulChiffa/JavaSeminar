@@ -1,5 +1,6 @@
 package ru.gb.HomeWork;
 
+
 public class Lesson3Ex2 {
     public static void main(String[] args) {
         // Заданный массив записей
