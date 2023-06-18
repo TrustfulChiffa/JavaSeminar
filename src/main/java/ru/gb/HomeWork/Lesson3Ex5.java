@@ -27,12 +27,12 @@ public class Lesson3Ex5 {
             return;
         }
 
-        for (int i = 0; i < input.length; i++) {
-            if (!used[i]) {
-                used[i] = true;
-                currentPermutation[depth] = input[i];
+        for (int element : input) {
+            if (!used[element - 1]) {
+                used[element - 1] = true;
+                currentPermutation[depth] = element;
                 generatePermutations(input, permutations, used, currentPermutation, depth + 1);
-                used[i] = false;
+                used[element - 1] = false;
             }
         }
     }
@@ -47,9 +47,9 @@ public class Lesson3Ex5 {
 
     private static void printPermutations(int[][] permutations) {
         // Вывод перестановок на экран
-        for (int i = 0; i < permutations.length; i++) {
-            for (int j = 0; j < permutations[i].length; j++) {
-                System.out.print(permutations[i][j] + " ");
+        for (int[] permutation : permutations) {
+            for (int element : permutation) {
+                System.out.print(element + " ");
             }
             System.out.println();
         }
