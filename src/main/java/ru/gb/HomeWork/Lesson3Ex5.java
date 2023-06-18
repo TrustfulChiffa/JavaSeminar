@@ -46,7 +46,6 @@ public class Lesson3Ex5 {
 
     private static void printPermutations(int[][] permutations) {
         for (int i = 0; i < permutations.length; i++) {
-            System.out.print("Permutation " + (i + 1) + ": ");
             for (int j = 0; j < permutations[i].length; j++) {
                 System.out.print(permutations[i][j] + " ");
             }
