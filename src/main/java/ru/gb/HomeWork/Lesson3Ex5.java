@@ -1,7 +1,7 @@
 package ru.gb.HomeWork;
 
 public class Lesson3Ex5 {
-    private static int permutationIndex = 0;  // Переменная для отслеживания индекса текущей перестановки
+    private static int permutationIndex = 0;
 
     public static void main(String[] args) {
         int[] input = {1, 2, 3};
@@ -14,7 +14,7 @@ public class Lesson3Ex5 {
         int[][] permutations = new int[totalPermutations][input.length];
         boolean[] used = new boolean[input.length];
         int[] currentPermutation = new int[input.length];
-        permutationIndex = 0;  // Сброс индекса перед генерацией перестановок
+        permutationIndex = 0;
         generatePermutations(input, permutations, used, currentPermutation, 0);
         return permutations;
     }
@@ -22,11 +22,8 @@ public class Lesson3Ex5 {
     private static void generatePermutations(int[] input, int[][] permutations, boolean[] used,
                                              int[] currentPermutation, int depth) {
         if (depth == input.length) {
-            // Копирование текущей перестановки в массив перестановок
-            for (int i = 0; i < input.length; i++) {
-                permutations[permutationIndex][i] = currentPermutation[i];
-            }
-            permutationIndex++;  // Увеличение индекса текущей перестановки
+            System.arraycopy(currentPermutation, 0, permutations[permutationIndex], 0, input.length);
+            permutationIndex++;
             return;
         }
 
@@ -41,7 +38,6 @@ public class Lesson3Ex5 {
     }
 
     private static int factorial(int n) {
-        // Рекурсивная функция для вычисления факториала числа
         if (n <= 1) {
             return 1;
         }
@@ -49,7 +45,6 @@ public class Lesson3Ex5 {
     }
 
     private static void printPermutations(int[][] permutations) {
-        // Вывод перестановок на экран
         for (int i = 0; i < permutations.length; i++) {
             System.out.print("Permutation " + (i + 1) + ": ");
             for (int j = 0; j < permutations[i].length; j++) {
