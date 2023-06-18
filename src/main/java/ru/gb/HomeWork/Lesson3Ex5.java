@@ -1,6 +1,5 @@
 package ru.gb.HomeWork;
 
-
 public class Lesson3Ex5 {
     private static int permutationIndex = 0;  // Переменная для отслеживания индекса текущей перестановки
 
