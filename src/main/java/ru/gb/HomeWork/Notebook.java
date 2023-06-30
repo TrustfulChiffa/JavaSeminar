@@ -3,11 +3,11 @@ package ru.gb.HomeWork;
 import java.util.*;
 
 public class Notebook {
-    private String brand;
-    private int ram;
-    private int storage;
-    private String os;
-    private String color;
+    private final String brand;
+    private final int ram;
+    private final int storage;
+    private final String os;
+    private final String color;
 
     public Notebook(String brand, int ram, int storage, String os, String color) {
         this.brand = brand;
@@ -51,31 +51,32 @@ public class Notebook {
                 String filterKey = entry.getKey();
                 Object filterValue = entry.getValue();
 
-                if (filterKey.equals("brand")) {
-                    if (!notebook.getBrand().equals(filterValue)) {
-                        meetsCriteria = false;
+                switch (filterKey) {
+                    case "brand":
+                        if (!notebook.getBrand().equals(filterValue)) {
+                            meetsCriteria = false;
+                        }
                         break;
-                    }
-                } else if (filterKey.equals("ram")) {
-                    if (notebook.getRam() < (int) filterValue) {
-                        meetsCriteria = false;
+                    case "ram":
+                        if (notebook.getRam() < (int) filterValue) {
+                            meetsCriteria = false;
+                        }
                         break;
-                    }
-                } else if (filterKey.equals("storage")) {
-                    if (notebook.getStorage() < (int) filterValue) {
-                        meetsCriteria = false;
+                    case "storage":
+                        if (notebook.getStorage() < (int) filterValue) {
+                            meetsCriteria = false;
+                        }
                         break;
-                    }
-                } else if (filterKey.equals("os")) {
-                    if (!notebook.getOs().equals(filterValue)) {
-                        meetsCriteria = false;
+                    case "os":
+                        if (!notebook.getOs().equals(filterValue)) {
+                            meetsCriteria = false;
+                        }
                         break;
-                    }
-                } else if (filterKey.equals("color")) {
-                    if (!notebook.getColor().equals(filterValue)) {
-                        meetsCriteria = false;
+                    case "color":
+                        if (!notebook.getColor().equals(filterValue)) {
+                            meetsCriteria = false;
+                        }
                         break;
-                    }
                 }
             }
 
@@ -94,6 +95,12 @@ public class Notebook {
         notebooks.add(new Notebook("HP", 16, 512, "Windows 11", "Silver"));
         notebooks.add(new Notebook("Apple", 16, 512, "macOS", "Space Gray"));
         notebooks.add(new Notebook("Lenovo", 12, 256, "Windows 10", "Black"));
+        notebooks.add(new Notebook("Asus", 8, 256, "Windows 10", "Silver"));
+        notebooks.add(new Notebook("Acer", 16, 512, "Windows 11", "Blue"));
+        notebooks.add(new Notebook("MSI", 32, 1000, "Windows 10", "Black"));
+        notebooks.add(new Notebook("Lenovo", 8, 512, "Windows 11", "Silver"));
+        notebooks.add(new Notebook("Dell", 16, 1000, "Windows 10", "Black"));
+        notebooks.add(new Notebook("HP", 8, 512, "Windows 11", "White"));
 
         // Запрос критериев фильтрации от пользователя
         Scanner scanner = new Scanner(System.in);
