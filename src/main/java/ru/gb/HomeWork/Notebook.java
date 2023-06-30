@@ -51,32 +51,17 @@ public class Notebook {
                 String filterKey = entry.getKey();
                 Object filterValue = entry.getValue();
 
-                switch (filterKey) {
-                    case "brand":
-                        if (!notebook.getBrand().equals(filterValue)) {
-                            meetsCriteria = false;
-                        }
-                        break;
-                    case "ram":
-                        if (notebook.getRam() < (int) filterValue) {
-                            meetsCriteria = false;
-                        }
-                        break;
-                    case "storage":
-                        if (notebook.getStorage() < (int) filterValue) {
-                            meetsCriteria = false;
-                        }
-                        break;
-                    case "os":
-                        if (!notebook.getOs().equals(filterValue)) {
-                            meetsCriteria = false;
-                        }
-                        break;
-                    case "color":
-                        if (!notebook.getColor().equals(filterValue)) {
-                            meetsCriteria = false;
-                        }
-                        break;
+                meetsCriteria = switch (filterKey) {
+                    case "brand" -> notebook.getBrand().equals(filterValue);
+                    case "ram" -> notebook.getRam() >= (int) filterValue;
+                    case "storage" -> notebook.getStorage() >= (int) filterValue;
+                    case "os" -> notebook.getOs().equals(filterValue);
+                    case "color" -> notebook.getColor().equals(filterValue);
+                    default -> false;
+                };
+
+                if (!meetsCriteria) {
+                    break;
                 }
             }
 
@@ -118,34 +103,35 @@ public class Notebook {
         Map<String, Object> filters = new HashMap<>();
 
         switch (filterCriteria) {
-            case 1:
+            case 1 -> {
                 System.out.println("Введите бренд:");
                 String brand = scanner.nextLine();
                 filters.put("brand", brand);
-                break;
-            case 2:
+            }
+            case 2 -> {
                 System.out.println("Введите минимальное значение ОЗУ:");
                 int minRam = scanner.nextInt();
                 filters.put("ram", minRam);
-                break;
-            case 3:
+            }
+            case 3 -> {
                 System.out.println("Введите минимальное значение объема ЖД:");
                 int minStorage = scanner.nextInt();
                 filters.put("storage", minStorage);
-                break;
-            case 4:
+            }
+            case 4 -> {
                 System.out.println("Введите операционную систему:");
                 String os = scanner.nextLine();
                 filters.put("os", os);
-                break;
-            case 5:
+            }
+            case 5 -> {
                 System.out.println("Введите цвет:");
                 String color = scanner.nextLine();
                 filters.put("color", color);
-                break;
-            default:
+            }
+            default -> {
                 System.out.println("Некорректный выбор критерия фильтрации.");
                 return;
+            }
         }
 
         // Фильтрация и вывод результатов
