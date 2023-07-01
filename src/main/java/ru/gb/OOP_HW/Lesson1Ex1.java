@@ -3,17 +3,20 @@ package ru.gb.OOP_HW;
 import java.util.ArrayList;
 import java.util.List;
 
+// Класс, представляющий товар
 class Product {
-    private String name;
-    private double price;
-    private int rating;
+    private String name; // Имя товара
+    private double price; // Цена товара
+    private int rating; // Рейтинг товара
 
+    // Конструктор класса
     public Product(String name, double price, int rating) {
         this.name = name;
         this.price = price;
         this.rating = rating;
     }
 
+    // Геттеры для получения значений переменных товара
     public String getName() {
         return name;
     }
@@ -27,72 +30,87 @@ class Product {
     }
 }
 
+// Интерфейс, определяющий контейнер для товаров
 interface ProductContainer {
-    void addProduct(Product product);
-    void removeProduct(Product product);
+    void addProduct(Product product); // Метод для добавления товара в контейнер
+    void removeProduct(Product product); // Метод для удаления товара из контейнера
 }
 
+// Класс, представляющий категорию товаров
 class Category implements ProductContainer {
-    private String name;
-    private List<Product> products;
+    private String name; // Имя категории
+    private List<Product> products; // Массив товаров в категории
 
+    // Конструктор класса
     public Category(String name) {
         this.name = name;
-        this.products = new ArrayList<>();
+        this.products = new ArrayList<>(); // Инициализация массива товаров
     }
 
+    // Геттер для получения имени категории
     public String getName() {
         return name;
     }
 
+    // Геттер для получения списка товаров в категории
     public List<Product> getProducts() {
         return products;
     }
 
+    // Реализация метода добавления товара в контейнер
     @Override
     public void addProduct(Product product) {
         products.add(product);
     }
 
+    // Реализация метода удаления товара из контейнера
     @Override
     public void removeProduct(Product product) {
         products.remove(product);
     }
 }
 
+// Класс, представляющий корзину с товарами
 class Basket implements ProductContainer {
-    private List<Product> purchasedProducts;
+    private List<Product> purchasedProducts; // Массив купленных товаров
 
+    // Конструктор класса
     public Basket() {
-        this.purchasedProducts = new ArrayList<>();
+        this.purchasedProducts = new ArrayList<>(); // Инициализация массива купленных товаров
     }
 
+    // Геттер для получения списка купленных товаров
     public List<Product> getPurchasedProducts() {
         return purchasedProducts;
     }
 
+    // Реализация метода добавления товара в контейнер
     @Override
     public void addProduct(Product product) {
         purchasedProducts.add(product);
     }
 
+    // Реализация метода удаления товара из контейнера
     @Override
     public void removeProduct(Product product) {
         purchasedProducts.remove(product);
     }
 }
 
+// Класс, представляющий пользователя
 class User {
-    private String login;
-    private String password;
-    private Basket basket;
+    private String login; // Логин пользователя
+    private String password; // Пароль пользователя
+    private Basket basket; // Корзина пользователя
 
+    // Конструктор класса
     public User(String login, String password) {
         this.login = login;
         this.password = password;
-        this.basket = new Basket();
+        this.basket = new Basket(); // Инициализация корзины пользователя
     }
 
+    // Геттеры для получения значений переменных пользователя
     public String getLogin() {
         return login;
     }
@@ -106,7 +124,8 @@ class User {
     }
 }
 
-class Lesson1Ex1 {
+// Главный класс приложения
+public class Lesson1Ex1 {
     public static void main(String[] args) {
         // Создание продуктов
         Product product1 = new Product("Product 1", 10.0, 5);
